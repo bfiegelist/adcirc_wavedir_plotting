@@ -1,11 +1,11 @@
-function HsDirVid(Dirfile_nc,HSfile_nc,meshfile_grd,coord_limits,Hsmax,num_arrows,vidfile_avi,tstepfactor,start_time)
+function HsDirVid(Dirfile_nc,HSfile_nc,meshfile_grd,coord_limits,Hsmax,num_arrows,vidfile_avi,tstepfactor,start_time,my_title)
 
 % Author: Robert Fiegelist (Robert.Fiegelist@uga.edu)
 
 % HSDIRPLOT draws arrows on the current axes for wave direction   
 % and plots significant wave height. This is repeated across time and a
 % movie file is made. A high-res movie can be made by uncommenting 
-% line 109. This MUST be run with acccess to the adcirc_util toolbox made
+% line 110. This MUST be run with acccess to the adcirc_util toolbox made
 % by Brian O. Blanton: https://github.com/BrianOBlanton/adcirc_util
 % 
 %       *Remember to input all file names within quotes
@@ -23,6 +23,7 @@ function HsDirVid(Dirfile_nc,HSfile_nc,meshfile_grd,coord_limits,Hsmax,num_arrow
 %                             video
 %              start_time   - form of "yyyy-MM-DD HR:MIN:SEC" 
 %                             Example: '2018-09-23 12:00:00'
+%              my_title     - Figure title in quotes
 %
 %       OUTPUT: .avi movie file
 % 
@@ -117,7 +118,7 @@ for m = 1:tstepfactor:width(dir_data)
         title(colorbar,'m','FontSize',10);
         xlabel(datestr(time_data(m)/24/3600+datenum(start_time)))
         axis(coord_limits);
-        title("Michael HS COAMPS padcswan")
+        title(my_title)
         
         hold on
      % Plot arrows using closest nodes coordinates and their wave directions
